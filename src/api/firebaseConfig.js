@@ -1,5 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import Home from '../screens/Home'
+import App from '../App'
+
 
 const  firebaseConfig = {
     apiKey: "AIzaSyBwtQc2fPcoD9sFSARZn_h5fW6JTIin4b8",
@@ -15,6 +18,7 @@ const  firebaseConfig = {
   //console.log("firebaseinit",firebase.initializeApp(firebaseConfig) )
   const provider = new firebase.auth.GoogleAuthProvider();
   const auth = firebase.auth()
+
   export const GoogleLogin = () => {
     
     auth.signInWithPopup(provider).then(function (result) {
@@ -24,6 +28,13 @@ const  firebaseConfig = {
         // The signed-in user info.
         const user = result.user;
         console.log("User => ", user);
+        
+        if (user !== null){
+          console.log(user.displayName)
+        } else {
+          console.log("cabros esto no prendió")
+        }
+       
 
         // ...
     }).catch(function (error) {

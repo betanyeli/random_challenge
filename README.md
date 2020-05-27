@@ -1,6 +1,19 @@
 # random_challenge
 A random user generators app.
 
+## :point_right:Functional requirements
+- The user must be able to enter from a url.
+- The user must be able to Login with Google Account.
+- The user must be able to Logout.
+- The user should see a message if their login was successful or not.
+- The User must be able to see the generated random list
+- The user must be able to select an item from the list and see its description
+
+## :point_up_2: Non-Functional requirements
+- Responsive WebApp.
+- Simplicity
+- Unit Test
+
 ## :computer:Tech Stack
 - Frontend UI
     - ReactJs

@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import Home from '../screens/Home'
-import App from '../App'
+
 
 
 const  firebaseConfig = {
@@ -15,9 +14,10 @@ const  firebaseConfig = {
   };
 
   firebase.initializeApp(firebaseConfig);
-  //console.log("firebaseinit",firebase.initializeApp(firebaseConfig) )
-  const provider = new firebase.auth.GoogleAuthProvider();
-  const auth = firebase.auth()
+
+  export const provider = new firebase.auth.GoogleAuthProvider();
+
+  export const auth = firebase.auth()
 
   export const GoogleLogin = () => {
     

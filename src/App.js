@@ -1,30 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import  { auth, provider } from "./api/firebaseConfig";
+import ResultApi from './screens/ResultApi'
+import GoogleButton from 'react-google-button'
+import Home from './screens/Home'
+import './App.css'
 
-import Login from './screens/Login';
+export class App extends React.Component {
+  constructor() {
+    super();
+      this.state = {
+        user: null,
+      }
+      this.GoogleLogin = this.GoogleLogin.bind(this)
+      this.logout = this.logout.bind(this)
+  }
 
-class App extends React.Component {
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({user})
+      }
+    })
+  }
 
+  logout() {
+    auth.signOut().then((result) => {
+      this.setState({
+        user: null
+      })
+    })
+  }
 
-  render(){
-   
+  GoogleLogin() {
+    auth
+      .signInWithPopup(provider)
+      .then(function (result) {
+        const user = result.user;
+        console.log("User => ", user);
 
+        this.setState({ user: user });
+      })
+      .catch(function (error) {
+        // Handle Errors here.
+  console.log("Err =>",  error)
+
+      });
+  }
+  render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            hOLOOOO AKSJKLAJSKL
-          </p>
-          <Login />
-
-
-        </header>
+      <div>
+        {this.state.user !== null ? <div><p>Hola, {this.state.user.displayName}</p> <ResultApi /> </div> : <Home />}
+        {this.state.user !== null ? <button onClick={this.logout}>Cerrar sesión</button> : <GoogleButton onClick={this.GoogleLogin} />}
       </div>
     );
   }
-
 }
 
 export default App;

@@ -25,7 +25,7 @@ A random user generators app.
     - Firebase
 
 - Api Request
-    - AJAX
+    - Axios
     - RandomUsers Api
 
 - Project Management Tool

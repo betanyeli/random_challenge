@@ -1,6 +1,7 @@
 import React from "react";
-import firebase, { auth, provider } from "../api/firebaseConfig";
-import { Button } from '@material-ui/core';
+import  { auth, provider } from "../api/firebaseConfig";
+import ResultApi from './ResultApi'
+import GoogleButton from 'react-google-button'
 
 export class Login extends React.Component {
   constructor() {
@@ -47,8 +48,8 @@ export class Login extends React.Component {
   render() {
     return (
       <div>
-        {this.state.user !== null ? <p>Hola, {this.state.user.displayName}</p> : <p>Inicia sesión</p>}
-        {this.state.user !== null ? <Button onClick={this.logout}>Cerrar sesión</Button> : <Button onClick={this.GoogleLogin}>Iniciar Sesión</Button>}
+        {this.state.user !== null ? <div><p>Hola, {this.state.user.displayName}</p> <ResultApi /> </div> : <p>Bienvenido a Random user's</p>}
+        {this.state.user !== null ? <button onClick={this.logout}>Cerrar sesión</button> : <GoogleButton onClick={this.GoogleLogin} />}
       </div>
     );
   }

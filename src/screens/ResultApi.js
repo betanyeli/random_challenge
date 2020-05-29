@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
+import Moment from "moment";
 import {
   Grid,
   Card,
-  CardMedia,
   CardHeader,
   Avatar,
   Container,
@@ -11,13 +11,29 @@ import {
   Typography,
   CardContent,
   Button,
+  IconButton
 } from "@material-ui/core";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import "./CommonStyles.css";
 
 export default class ResultApi extends React.Component {
   state = {
     persons: [],
-    occupation: ["Frontend Dev", "Backend Dev", "TikToker", "Musician", "Product Owner", "CTO", "Data Scientist"]
+    occupation: [
+      "Frontend Dev",
+      "Backend Dev",
+      "TikToker",
+      "Musician",
+      "Product Owner",
+      "CTO",
+      "Data Scientist",
+    ],
+    hobbies: [
+      "dance, sing and watch Netflix",
+      "travel, cooking, and watch football",
+      "draw anime, drink wine and walk on the beach",
+      "sleep, swim and travel",
+    ],
   };
 
   componentDidMount() {
@@ -28,13 +44,13 @@ export default class ResultApi extends React.Component {
     });
   }
 
-  randomizer (arr){
-    let result= arr[Math.floor(Math.random()*arr.length)]
+  randomizer(arr) {
+    let result = arr[Math.floor(Math.random() * arr.length)];
     return result;
   }
-  
-  render() {
 
+
+  render() {
     return (
       <Container className="cardGrid" maxWidth="md">
         {/* End hero unit */}
@@ -46,19 +62,33 @@ export default class ResultApi extends React.Component {
                   avatar={
                     <Avatar alt="Profile Image" src={el.picture.thumbnail} />
                   }
-                  title= {el.name.title + ' ' + el.name.last }
-                  subheader="September 14, 2016"
+                  title={el.name.title + " " + el.name.last}
+                  subheader={Moment(el.dob.date).format("DD-MM-YYYY")}
                 />
                 <CardContent className="cardContent">
                   <Typography gutterBottom variant="h5" component="h2">
                     {this.randomizer(this.state.occupation)}
                   </Typography>
                   <Typography>
-                Hello! I'm {el.name.first } from {el.location.city} - {el.location.country}
+                    Hello, everyone! I'm {el.name.first}{" "}
+                    {el.gender === "male" ? (
+                      <span role="img" aria-label="male">
+                        🕺
+                      </span>
+                    ) : (
+                      <span role="img" aria-label="female">
+                        💃
+                      </span>
+                    )}{" "}, {el.dob.age} years old, 
+                    from {el.location.city} - {el.location.country} . I like to{" "}
+                    {this.randomizer(this.state.hobbies)}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" color="primary">
+                  <IconButton aria-label="add to favorites">
+                    <FavoriteIcon style={{ fontSize: 30, color: "red" }} />
+                  </IconButton>
+                    <Button  size="small" color="primary">
                     Match
                   </Button>
                   <Button size="small" color="primary">

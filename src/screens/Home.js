@@ -19,7 +19,7 @@ export default function Home() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Random users
+            Random ... 
           </Typography>
           <form className={classes.form} noValidate>
             <TextField

@@ -5,11 +5,19 @@ import {
   Card,
   CardMedia,
   CardHeader,
+  Avatar,
+  Container,
+  CardActions,
+  Typography,
+  CardContent,
+  Button,
 } from "@material-ui/core";
+import "./CommonStyles.css";
 
 export default class ResultApi extends React.Component {
   state = {
     persons: [],
+    occupation: ["Frontend Dev", "Backend Dev", "TikToker", "Musician", "Product Owner", "CTO", "Data Scientist"]
   };
 
   componentDidMount() {
@@ -20,24 +28,48 @@ export default class ResultApi extends React.Component {
     });
   }
 
+  randomizer (arr){
+    let result= arr[Math.floor(Math.random()*arr.length)]
+    return result;
+  }
+  
   render() {
+
     return (
-      <Grid container>
-        <Grid item xs={12} sm={6} md={6}>
-          {this.state.persons.map((el, id) => 
-            <Card key={id}>
-              {el.name.title}
-              <CardHeader>
-              
-                <CardMedia
-                        imageUrl={el.picture.thumbnail}
-                        title="Card Image" />
-            
-              </CardHeader>
-            </Card>
-          )}
+      <Container className="cardGrid" maxWidth="md">
+        {/* End hero unit */}
+        <Grid container spacing={4}>
+          {this.state.persons.map((el, card) => (
+            <Grid item key={card} xs={12} sm={6} md={4}>
+              <Card className="card">
+                <CardHeader
+                  avatar={
+                    <Avatar alt="Profile Image" src={el.picture.thumbnail} />
+                  }
+                  title= {el.name.title + ' ' + el.name.last }
+                  subheader="September 14, 2016"
+                />
+                <CardContent className="cardContent">
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {this.randomizer(this.state.occupation)}
+                  </Typography>
+                  <Typography>
+                Hello! I'm {el.name.first } from {el.location.city} - {el.location.country}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    Match
+                  </Button>
+                  <Button size="small" color="primary">
+                    Contact
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
-      </Grid>
+      </Container>
     );
   }
 }

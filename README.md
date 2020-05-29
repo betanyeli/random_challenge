@@ -1,6 +1,12 @@
 # random_challenge
 A random user generators app.
 
+## Start 
+
+- Run in terminal `npm install`
+- Run  `npm start`
+- :warning: .env file contains enviroments variables for Firebase.
+
 ## :point_right:Functional requirements
 - The user must be able to enter from a url.
 - The user must be able to Login with Google Account.

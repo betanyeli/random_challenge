@@ -49,8 +49,8 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.user !== null ? <div><p>Hola, {this.state.user.displayName}</p> <ResultApi /> </div> : <Home />}
-        {this.state.user !== null ? <button onClick={this.logout}>Cerrar sesión</button> : <GoogleButton onClick={this.GoogleLogin} />}
+        {this.state.user !== null ? <div><p>Welcome, {this.state.user.displayName}</p> <ResultApi /> </div> : <Home />}
+        {this.state.user !== null ? <button onClick={this.logout}>Sign Out</button> : <GoogleButton onClick={this.GoogleLogin} />}
       </div>
     );
   }

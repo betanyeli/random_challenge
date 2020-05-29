@@ -1,0 +1,12 @@
+.card{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: violet;
+}
+
+.cardContainer{
+background-color: tomato;
+}

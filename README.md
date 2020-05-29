@@ -7,7 +7,7 @@ A random user generators app.
 - The user must be able to Logout.
 - The user should see a message if their login was successful or not.
 - The User must be able to see the generated random list
-- The user must be able to select an item from the list and see its description
+
 
 ## :point_up_2: Non-Functional requirements
 - Responsive WebApp.
@@ -18,11 +18,13 @@ A random user generators app.
 - Frontend UI
     - ReactJs
     - Material UI
-- Frontend Deploy
-    - Amplify AWS CloudFront
+    - MomentJs from date format
+
+- Backend
+    - Amplify AWS CloudFront & S3
 
 - Auth Services
-    - Firebase
+    - Firebase Auth
 
 - Api Request
     - Axios

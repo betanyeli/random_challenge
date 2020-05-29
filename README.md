@@ -45,3 +45,5 @@ A random user generators app.
     - Select AWS CloudFront & S3 Bucket
     - Select DEV option for HTTP or PROD for HTTPS.
 - Run in terminal `Amplify publish` 
+
+Develop by Betányeli. :eyes:

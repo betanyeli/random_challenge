@@ -16,6 +16,8 @@ A random user generators app.
 
 ## :computer:Tech Stack
 - Frontend UI
+    - JavaScript ES6
+    - CSS3
     - ReactJs
     - Material UI
     - MomentJs from date format
@@ -29,6 +31,11 @@ A random user generators app.
 - Api Request
     - Axios
     - RandomUsers Api
+
+- Test (Not yet implemented) :warning:
+    - Jest
+    - Enzyme
+    - Babel config
 
 - Project Management Tool
     -  [Github Project](https://github.com/betanyeli/random_challenge)

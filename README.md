@@ -53,4 +53,13 @@ A random user generators app.
     - Select DEV option for HTTP or PROD for HTTPS.
 - Run in terminal `Amplify publish` 
 
+
+## HIGH-fidelity PROTOTYPE
+
+### Desktop
+![1](src/assets/1.PNG)
+![2](src/assets/2.PNG)
+### Mobile
+![3](src/assets/3.PNG)
+![4](src/assets/4.PNG)
 Develop by Betányeli. :eyes:

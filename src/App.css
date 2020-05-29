@@ -1,4 +1,19 @@
-.Home {
-  background-color: tomato;
+.container {
 
+  display: grid;
+  justify-content: center;
+}
+
+.child {
+  justify-content: center;
+  display: flex;
+  margin: 0.5em;
+}
+
+.Appbar{
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  padding: 0.2em;
+  padding-left: 0.5em;
 }

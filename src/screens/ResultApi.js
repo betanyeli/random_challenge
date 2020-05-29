@@ -71,7 +71,7 @@ export default class ResultApi extends React.Component {
                   </Typography>
                   <Typography>
                     Hello, everyone! I'm {el.name.first}{" "}
-                    {el.gender == "male" ? (
+                    {el.gender === "male" ? (
                       <span role="img" aria-label="male">
                         🕺
                       </span>

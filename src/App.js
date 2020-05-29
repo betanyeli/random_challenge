@@ -1,34 +1,37 @@
 import React from "react";
-import  { auth, provider } from "./api/firebaseConfig";
-import ResultApi from './screens/ResultApi'
-import GoogleButton from 'react-google-button'
-import Home from './screens/Home'
-import './App.css'
+import { auth, provider } from "./api/firebaseConfig";
+import { Button, Avatar, AppBar } from "@material-ui/core";
+import ResultApi from "./screens/ResultApi";
+import GoogleButton from "react-google-button";
+import Home from "./screens/Home";
+import "./App.css";
 
 export class App extends React.Component {
   constructor() {
     super();
-      this.state = {
-        user: null,
-      }
-      this.GoogleLogin = this.GoogleLogin.bind(this)
-      this.logout = this.logout.bind(this)
+    this.state = {
+      user: null,
+
+  
+    };
+    this.GoogleLogin = this.GoogleLogin.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({user})
+        this.setState({ user });
       }
-    })
+    });
   }
 
   logout() {
     auth.signOut().then((result) => {
       this.setState({
-        user: null
-      })
-    })
+        user: null,
+      });
+    });
   }
 
   GoogleLogin() {
@@ -42,15 +45,32 @@ export class App extends React.Component {
       })
       .catch(function (error) {
         // Handle Errors here.
-  console.log("Err =>",  error)
-
+        console.log("Err =>", error);
       });
   }
   render() {
+    const { user } = this.state;
     return (
-      <div>
-        {this.state.user !== null ? <div><p>Welcome, {this.state.user.displayName}</p> <ResultApi /> </div> : <Home />}
-        {this.state.user !== null ? <button onClick={this.logout}>Sign Out</button> : <GoogleButton onClick={this.GoogleLogin} />}
+      <div className="container">
+        {user !== null ? (
+          <div>
+            <AppBar className="Appbar" position="static">
+            <Avatar alt="Profile Image" src={user.photoUrl} />
+            <p>Welcome, {user.displayName}</p>
+            <Button onClick={this.logout} color="inherit">SIGN OUT</Button>
+            </AppBar>
+
+            <ResultApi />
+
+          </div>
+        ) : (
+          <React.Fragment>
+            <Home />
+            <div className="child">
+              <GoogleButton onClick={this.GoogleLogin} />
+            </div>
+          </React.Fragment>
+        )}
       </div>
     );
   }

@@ -1,10 +1,17 @@
-
 import React from "react";
-import {Avatar,  Button, CssBaseline, TextField, FormControlLabel, Checkbox, Paper, Grid, Typography} from '@material-ui/core';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Paper,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./UseStyles";
-
-
 
 export default function Home() {
   const classes = useStyles();
@@ -12,14 +19,13 @@ export default function Home() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
       <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Random ... 
+            Random Users Challenge
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -29,7 +35,7 @@ export default function Home() {
               required
               fullWidth
               id="email"
-              label="Only Google Sign In Is Supported"
+              label="email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -41,7 +47,7 @@ export default function Home() {
               required
               fullWidth
               name="password"
-              label="Only Google Sign In Is Supported"
+              label="password"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -59,10 +65,20 @@ export default function Home() {
             >
               Sign In
             </Button>
+
+            <TextField
+            error
+              id="standard-full-width"
+              label=""
+              style={{ margin: 8 }}
+              placeholder=""
+              helperText="Only Google Sign In Is Supported"
+              fullWidth
+              margin="normal"
+            />
           </form>
         </div>
       </Grid>
     </Grid>
   );
 }
-
